@@ -12,7 +12,7 @@
             <h1>Pizzaria Quase Pronto</h1>
             <label for="cliente">Nome:</label>
             <input type="text" name="cliente" id="cliente" required max="30">
-            <label for="contato">Telefone de conatato:</label>
+            <label for="contato">Telefone de contato:</label>
             <input type="number" name="contato" id="contato" required min="10" max="11">
             <label for="rua">Endereço:</label>
             <input type="text" name="rua" id="rua" required max="50">
@@ -22,16 +22,25 @@
             <input type="text" name="cidade" id="cidade" required max="20">
             <label for="sabor">Sabor da pizza:</label>
             <input type="text" name="sabor" id="sabor" required>
-            <label >Tamanho da pizza:</label>
-            <input type="radio" name="tamanho" id="tamanho" value="grande"> grande
-            <input type="radio" name="tamanho" id="tamanho" value="medio"> medio
-            <input type="radio" name="tamanho" id="tamanho" value="pequeno"> pequeno
+            
+            <fieldset>
+                <legend>Tamanho da pizza:</legend>
+                <input type="radio" id="radio" /> <label for="radio">grande</label>
+                <input type="radio" id="radio" /> <label for="radio">média</label>
+                <input type="radio" id="radio" /> <label for="radio">pequena</label>
+              </fieldset>
+
+              <fieldset>
+                <legend>Com borda?:</legend>
+                <input type="radio" id="radio" /> <label for="radio">sim</label>
+                <input type="radio" id="radio" /> <label for="radio">não</label>
+              </fieldset>
+
+              <input type="submit" value="Enviar">
+
         </form>
         
     </main>
 </body>
 </html>
 
-tamanho 
-sabor 
-borda
