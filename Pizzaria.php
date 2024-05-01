@@ -11,9 +11,76 @@
     include "Classes/Cerveja.php";
     include "Classes/Avaliacao.php";
 
-        $faturamento = new Faturamento();
+$avaliacao = new Avaliacao();
+    $nota = $_POST['nota'];
+    $avaliacao->setNota($nota);
+    $observacao = $_POST['observacao'];
+    $avaliacao->setObservacao($observacao);
 
-        echo "Bem vindo a pizzaria!\n";
+$batatinha = new Batatinha();
+    $tamanho = $_POST['tamanho'];
+    $batatinha->setTamanho($tamanho);
+
+$cerveja = new Cerveja();
+    $tamanho = $_POST['tamanho'];
+    $cerveja->setTamanho($tamanho);
+    $tipo = $_POST['tipo'];
+    $cerveja->setTipo($tipo);
+
+$cliente = new Cliente();
+    $nome = $_POST['nome'];
+    $cliente->setNome($nome);
+    $contato = $_POST['contato'];
+    $cliente->setContato($contato);
+    $endereco = $_POST['endereco'];
+    $cliente->setEndereco($endereco);
+
+$endereco = new Endereco();
+    $rua = $_POST['rua'];
+    $endereco->setRua($rua);
+    $bairro = $_POST['bairro'];
+    $endereco->setBairro($bairro);
+    $cidade = $_POST['cidade'];
+    $endereco->setCidade($cidade);
+
+$faturamento = new Faturamento();
+
+$itemDoPedido = new ItemdoPedido();
+    $tipo = $_POST['tipo'];
+    $itemDoPedido->setTipo($tipo);
+    $sabor = $_POST['sabor'];
+    $itemDoPedido->setSabor($sabor);
+
+$pedido = new Pedido();
+    $pedido->setCliente($cliente);
+    $pedido->setPizza($pizza);
+    $pedido->setBatatinha($batatinha);
+    $pedido->setCerveja($cerveja);
+    $pedido->setRefri($refri);
+
+
+$pizza = new Pizza();
+    $tamanho = $_POST['tamanho'];
+    $pizza->setTamanho($tamanho);
+    $sabor = $_POST['sabor'];
+    $pizza->setSabor($sabor);
+    $borda = $_POST['borda'];
+    $pizza->setBorda($borda);
+
+$refri = new Refri(); 
+    $tamanho = $_POST['tamanho'];
+    $refri->setTamanho($tamanho);
+    $sabor = $_POST['sabor'];
+    $refri->setSabor($sabor);
+
+
+
+
+
+
+
+
+        /*echo "Bem vindo a pizzaria!\n";
 
 
         echo "Selecione:\n";
@@ -74,5 +141,5 @@
             $pedido = readline();
             $faturamento->imprimirCabecalho();
             $faturamento->imprimirPedido($pedido);
-        }
+        }*/ 
 ?>
