@@ -1,22 +1,14 @@
 <?php 
+    
+    include_once 'ItemDopedido.php';
     class Batatinha extends ItemdoPedido {
         private String $tamanho; 
 
-        public function setTamanho(String $tamanho) {
-            $this->tamanho = $tamanho;
-        }
-        public function getTamanho() {
+        public function getTamanho(): string {
             return $this->tamanho;
         }
-
-        public function getValor(){
-            if($this->tamanho === "grande"){
-                return 15;
-            } elseif ($this->tamanho === "medio") {
-                return 10;
-            } elseif ($this->tamanho === "pequeno") {
-                return 5;
-            }
+        public function setTamanho(string $tamanho): void {
+            $this->tamanho = $tamanho;
         }
     }
 ?>

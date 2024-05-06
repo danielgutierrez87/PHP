@@ -1,44 +1,30 @@
 <?php 
-    class Pizza extends ItemdoPedido {
-        private String $tamanho;
-        private String $sabor;
-        private String $borda;
+    include_once 'ItemDoPedido.php';
 
-        public function setTamanho(String $tamanho) {
-            $this->tamanho = $tamanho;
-        }
-        public function getTamanho() {
-            return $this->tamanho;
-        }
-
-        public function setSabor(String $sabor) {
-            $this->sabor = $sabor;
-        }
-        public function getSabor() {
+    class Pizza extends ItemDoPedido {
+        private string $sabor;
+        private string $borda;
+        private string $tamanho;
+    
+        public function getSabor(): string {
             return $this->sabor;
         }
-
-        public function setBorda(String $borda) {
-            $this->borda = $borda;
+        public function setSabor(string $sabor): void {
+            $this->sabor = $sabor;
         }
-        public function getBorda() {
+    
+        public function getBorda(): string {
             return $this->borda;
         }
-
-        public function getValor(){
-            if($this->tamanho === "g"){
-                if(empty($this->borda)){
-                    return 50;
-                } else {
-                    return 55;
-                }
-            } elseif ($this->tamanho === "m"){
-                if(empty($this->borda)){
-                    return 40;
-                } else {
-                    return 45;
-                }
-            }
+        public function setBorda(string $borda): void {
+            $this->borda = $borda;
+        }
+    
+        public function getTamanho(): string {
+            return $this->tamanho;
+        }
+        public function setTamanho(string $tamanho): void {
+            $this->tamanho = $tamanho;
         }
     }
 ?>

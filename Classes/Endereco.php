@@ -1,28 +1,28 @@
 <?php 
     class Endereco {
-        private String $rua;
-        private String $bairro;
-        private String $cidade;
-
-        public function setRua(string $rua) {
-            $this->rua = $rua;
-        }
-        public function getRua() {
+        private string $rua;
+        private string $bairro;
+        private string $cidade;
+    
+        public function getRua(): string {
             return $this->rua;
         }
-
-        public function setBairro(String $bairro) {
-            $this->bairro = $bairro;
+        public function setRua(string $rua): void {
+            $this->rua = $rua;
         }
-        public function getBairro() {
+    
+        public function getBairro(): string {
             return $this->bairro;
         }
-
-        public function setCidade(String $cidade) {
-            $this->cidade = $cidade;
+        public function setBairro(string $bairro): void {
+            $this->bairro = $bairro;
         }
-        public function getCidade() {
+    
+        public function getCidade(): string {
             return $this->cidade;
+        }
+        public function setCidade(string $cidade): void {
+            $this->cidade = $cidade;
         }
     }
 ?>

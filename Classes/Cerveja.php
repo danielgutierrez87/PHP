@@ -1,4 +1,6 @@
 <?php 
+    
+    include_once 'ItemDopedido.php';
     class Cerveja extends ItemdoPedido {
         private String $tamanho; 
         private String $tipo;
@@ -10,23 +12,11 @@
             return $this->tamanho;
         }
 
-        public function setTipo(String $tipo) {
-            $this->tipo = $tipo;
-        }
-        public function getTipo() {
+        public function getTipo(): string {
             return $this->tipo;
         }
-
-        public function getValor(){
-            if($this->tipo === "garrafa"){
-                if($this->getTamanho() === "1l"){
-                    return 6.50;
-                } else {
-                    return 4;
-                }
-            } elseif ($this->tipo === "latao"){
-                return 2.49;
-            }
+        public function setTipo(string $tipo): void {
+            $this->tipo = $tipo;
         }
     }
 ?>

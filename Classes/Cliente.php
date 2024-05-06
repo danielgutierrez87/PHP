@@ -1,28 +1,26 @@
 <?php 
     class Cliente {
-        private String $nome;
-        private String $contato;
+        private string $nome;
+        private string $contato;
         private Endereco $endereco;
-
-        public function setNome(String $nome) {
-            $this->nome = $nome;
-        }
-        public function getNome() {
+    
+        public function getNome(): string {
             return $this->nome;
         }
-
-        public function setContato(String $contato) {
-            $this->contato = $contato;
+        public function setNome(string $nome): void {
+            $this->nome = $nome;
         }
-        public function getContato() {
+        public function getContato(): string {
             return $this->contato;
         }
-
-        public function setEndereco(Endereco $endereco) { 
-            $this->endereco = $endereco;
+        public function setContato(string $contato): void {
+            $this->contato = $contato;
         }
-        public function getEndereco() {
+        public function getEndereco(): Endereco {
             return $this->endereco;
+        }
+        public function setEndereco(Endereco $endereco): void {
+            $this->endereco = $endereco;
         }
     }
 ?>

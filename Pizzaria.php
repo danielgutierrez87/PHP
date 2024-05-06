@@ -11,135 +11,80 @@
     include "Classes/Cerveja.php";
     include "Classes/Avaliacao.php";
 
-$avaliacao = new Avaliacao();
-    $nota = $_POST['nota'];
-    $avaliacao->setNota($nota);
-    $observacao = $_POST['observacao'];
-    $avaliacao->setObservacao($observacao);
-
-$batatinha = new Batatinha();
-    $tamanho = $_POST['tamanho'];
-    $batatinha->setTamanho($tamanho);
-
-$cerveja = new Cerveja();
-    $tamanho = $_POST['tamanho'];
-    $cerveja->setTamanho($tamanho);
-    $tipo = $_POST['tipo'];
-    $cerveja->setTipo($tipo);
-
-$cliente = new Cliente();
+    $tamanhoPizza = $_POST['tpizza'];
+    $saborPizza = $_POST['spizza'];
+    $bordaPizza = $_POST['borda'];
+    $tamanhoBatata = $_POST['tbatatinha'];
+    $tipoCerveja = $_POST['ctipo'];
+    $tamanhoCerveja = $_POST['ctamanho'];
+    $tamanhoRefri = $_POST['rtamanho'];
+    $saborRefri = $_POST['rsabor'];
     $nome = $_POST['nome'];
-    $cliente->setNome($nome);
     $contato = $_POST['contato'];
-    $cliente->setContato($contato);
-    $endereco = $_POST['endereco'];
-    $cliente->setEndereco($endereco);
-
-$endereco = new Endereco();
     $rua = $_POST['rua'];
-    $endereco->setRua($rua);
     $bairro = $_POST['bairro'];
-    $endereco->setBairro($bairro);
     $cidade = $_POST['cidade'];
+
+    $faturamento = new Faturamento();
+
+    $endereco = new Endereco();
+    $endereco->setRua($rua);
+    $endereco->setBairro($bairro);
     $endereco->setCidade($cidade);
 
-$faturamento = new Faturamento();
+    $cliente = new Cliente();
+    $cliente->setNome($nome);
+    $cliente->setContato($contato);
 
-$itemDoPedido = new ItemdoPedido();
-    $tipo = $_POST['tipo'];
-    $itemDoPedido->setTipo($tipo);
-    $sabor = $_POST['sabor'];
-    $itemDoPedido->setSabor($sabor);
-
-$pedido = new Pedido();
+    $pedido = new Pedido();
+    $pedido->setDataHoraPedido(time());
     $pedido->setCliente($cliente);
-    $pedido->setPizza($pizza);
-    $pedido->setBatatinha($batatinha);
-    $pedido->setCerveja($cerveja);
-    $pedido->setRefri($refri);
+    $pedido->setEndereco($endereco);
+    if(isset($_POST['itemDoPedido']['pizza'])){
+        $pizza = new Pizza();
+        $pizza->setTamanho($tamanhoPizza);
+        $pizza->setSabor($saborPizza);
+        $pizza->setBorda($bordaPizza);
+        $pedido->addItemDoPedido($pizza);
+        $pedido->addTotal($pizza->getValor());
+        $faturamento->addQtdPizzas();
+        $faturamento->addPedido($pedido);
+    }
 
+    if(isset($_POST['itemDoPedido']['batatinha'])){
+        $batatinha = new Batatinha();
+        $batatinha->setTamanho($tamanhoBatata);
+        $pedido->addItemDoPedido($batatinha);
+        $pedido->addTotal($batatinha->getValor());
+        $faturamento->addQtdBatatinhas();
+        $faturamento->addPedido($pedido);
+    }
 
-$pizza = new Pizza();
-    $tamanho = $_POST['tamanho'];
-    $pizza->setTamanho($tamanho);
-    $sabor = $_POST['sabor'];
-    $pizza->setSabor($sabor);
-    $borda = $_POST['borda'];
-    $pizza->setBorda($borda);
+    if(isset($_POST['itemDoPedido']['cerveja'])){
+        $cerveja = new Cerveja();
+        $cerveja->setTamanho($tamanhoCerveja);
+        $cerveja->setTipo($tipoCerveja);
+        $pedido->addItemDoPedido($cerveja);
+        $pedido->addTotal($cerveja->getValor());
+        $faturamento->addQtdCerveja();
+        $faturamento->addPedido($pedido);
+    }
 
-$refri = new Refri(); 
-    $tamanho = $_POST['tamanho'];
-    $refri->setTamanho($tamanho);
-    $sabor = $_POST['sabor'];
-    $refri->setSabor($sabor);
+    if(isset($_POST['itemDoPedido']['refri'])){
+        $refri = new Refri();
+        $refri->setTamanho($tamanhoRefri);
+        $refri->setTipo($saborRefri);
+        $pedido->addItemDoPedido($refri);
+        $pedido->addTotal($refri->getvalor());
+        $faturamento->addQtdRefri(); 
+        $faturamento->addPedido($pedido);
+    }
+    $pedido->setTaxaEntrega($endereco->getBairro());
+    $pedido->addTotal($pedido->getTaxaEntrega());
+    $faturamento->addTotalMotoboy($pedido->getTaxaEntrega());
+    $faturamento->addTotalGeral($pedido->getTotal());
+    $faturamento->setTotalLiquido();
+    
+    echo $faturamento->imprimirRelatorio();
 
-
-
-
-
-
-
-
-        /*echo "Bem vindo a pizzaria!\n";
-
-
-        echo "Selecione:\n";
-        echo "1.Pedido\n";
-        echo "2.Imprimir histórico\n";
-        echo "3.Imprimir pedido\n";
-        echo "#.Sair\n";
-
-        if($menu === "#"){
-            break;
-        }
-        else if($menu === "1"){
-            $pedido = new Pedido();
-            $cliente = new Cliente();
-            $endereco = new Endereco();
-
-            while(true){
-                $itemDoPedido = new ItemDoPedido();
-
-                $itemDoPedido->setTipo(readline("Informe o tipo de pizza: "));
-                $itemDoPedido->setSabor(readline("Informe o sabor de pizza: "));
-
-                $pedido->addItemDoPedido($itemDoPedido);
-
-                $pedido->addTotal($itemDoPedido->getValor());
-
-                $faturamento->addQtdPizzas();
-
-                $continuar = readline("mais alguma coisa?");
-                if($continuar === ""){
-                    break;
-                }
-            }
-
-            $cliente->setNome(readline("Cliente: "));
-            $cliente->setContato(readline("Contato: "));
-            $pedido->setCliente($cliente);
-            $endereco->setBairro(readline("Bairro: "));
-            $endereco->setRua(readline("Rua: "));
-            $endereco->setRua(readline("Cidade: "));
-            $pedido->setDataHoraPedido();
-
-            $pedido->setTaxaEntrega($endereco->getBairro());
-            $pedido->addTotal($pedido->getTaxaEntrega());
-
-            $faturamento->addPedido($pedido);
-            $faturamento->addTotalMotoboy($pedido->getTaxaEntrega());
-            $faturamento->addTotalGeral($pedido->getTotal());
-            $faturamento->setTotalLiquido();
-
-        }
-        else if($menu === "2"){
-            $faturamento->imprimirCabecalho();
-            $faturamento->imprimirRelatorio();
-        }
-        else if($menu === "3"){
-            echo "Qual pedido: \n";
-            $pedido = readline();
-            $faturamento->imprimirCabecalho();
-            $faturamento->imprimirPedido($pedido);
-        }*/ 
 ?>
