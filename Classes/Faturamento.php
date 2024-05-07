@@ -1,5 +1,24 @@
 <?php 
-    class Faturamento {
+    use Pedido;
+
+    class Faturamento_class
+    {
+        private array $pedido;
+        public function addPedido(Pedido $pedido)
+        {
+            $this->pedido[] = $pedido;
+        }
+        public function getPedido()
+        {
+            return $this->pedido;
+        }
+        public function historico($npedido){
+          
+        }
+    }
+
+
+    /*class Faturamento {
     private $data;
     private $qtdPizzas = 0;
     private $qtdBatatinhas = 0;
@@ -79,5 +98,5 @@
     public function imprimirPedido($n){
         $this->pedido[$n-1]->imprimir($n);
     }
-}
+} */ 
 ?>

@@ -1,26 +1,39 @@
 <?php 
-    class Cliente {
-        private string $nome;
-        private string $contato;
-        private Endereco $endereco;
+    require_once 'conexao.php';
+    require_once 'endereco.php';
+
+    class Cliente extends Endereco {
+        private $nome;
+        private $endereco; 
     
-        public function getNome(): string {
-            return $this->nome;
-        }
-        public function setNome(string $nome): void {
+        public function setNome($nome) {
             $this->nome = $nome;
         }
-        public function getContato(): string {
-            return $this->contato;
+        public function getNome(){
+            return $this->nome;
         }
-        public function setContato(string $contato): void {
-            $this->contato = $contato;
+        public function setEndereco(Endereco $endereco){
+            $this->endereco = $endereco;
         }
-        public function getEndereco(): Endereco {
+        public function getEndereco(){
             return $this->endereco;
         }
-        public function setEndereco(Endereco $endereco): void {
-            $this->endereco = $endereco;
+    
+        public function inserirCliente(){
+            $database = new Conexao();
+            $db = $database->getConnection();
+            $sql = 'INSERT INTO nome (nome) VALUES (:rua, :endereco)';
+            try {
+                $stmt = $db->prepare($sql);
+                $stmt->bindParam(':rua', $this->rua);
+                $stmt->bindParam(':bairro', $this->bairro);
+                $stmt->execute();
+        
+                return true;
+            } catch (PDOException $e) {
+                echo 'Erro ao inserir endereço: ' . $e->getMessage();
+                return false;
+            }
         }
     }
 ?>

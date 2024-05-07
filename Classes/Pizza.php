@@ -1,30 +1,50 @@
 <?php 
-    include_once 'ItemDoPedido.php';
-
-    class Pizza extends ItemDoPedido {
-        private string $sabor;
-        private string $borda;
-        private string $tamanho;
+    class Cerveja extends ItemDoPedido {
+        private $tamanho;
+        private $tipo;
     
-        public function getSabor(): string {
-            return $this->sabor;
+        public function setTamanho($tamanho)
+        {
+            $this->tamanho = $tamanho;
         }
-        public function setSabor(string $sabor): void {
-            $this->sabor = $sabor;
-        }
-    
-        public function getBorda(): string {
-            return $this->borda;
-        }
-        public function setBorda(string $borda): void {
-            $this->borda = $borda;
-        }
-    
-        public function getTamanho(): string {
+        public function getTamanho()
+        {
             return $this->tamanho;
         }
-        public function setTamanho(string $tamanho): void {
-            $this->tamanho = $tamanho;
+    
+        public function setTipo($tipo)
+        {
+            $this->tipo = $tipo;
+        }
+    
+        public function getTipo()
+        {
+            return $this->tipo;
+        }
+    
+        public function calcularPrecoCerveja() 
+        {
+            $precoBase = 0;
+            switch ($this->tamanho) {
+                case 'Longneck':
+                    $precoBase = 9;
+                    break;
+                case 'Latao':
+                    $precoBase = 8;
+                    break;
+            }
+            $precoTipo = 0; 
+            switch ($this->tipo) {
+                case 'heineken':
+                    $precoTipo = 5;
+                    break;
+                case 'corona':
+                    $precoTipo = 5;
+                    break;
+            }
+            $precoTotal = $precoBase + $precoTipo;
+            $this->setValor($precoTotal); 
+            return $precoTotal;
         }
     }
 ?>
