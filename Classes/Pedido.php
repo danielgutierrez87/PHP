@@ -125,7 +125,7 @@
             echo"<form>";
             echo"<ul>";
             echo "Numero do Pedido: " ." ". $this->getNumeroDoPedido();
-            echo"<h2>&#127829; Detalhes do Pedido &#127829;</h2>";
+            echo"<h2>Detalhes do Pedido</h2>";
             echo "Total: " . $this->getTotal() . "<br>";
             echo "Taxa de Entrega: " . $this->getTaxaDeEntrega() . "<br>";
             echo "Cliente: " . $this->getCliente()->getNome() . "<br>";
