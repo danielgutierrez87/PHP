@@ -4,13 +4,13 @@
 //print_r($_POST);
 //exit;
 
-require_once 'Pedido.php';
-require_once 'Cliente.php';
-require_once 'Pizza.php';
-require_once 'ItemDoPedido.php';
-require_once 'Batatinha.php';
-require_once 'Cerveja.php';
-require_once 'Refri.php';
+require_once 'Classes/Cliente.php';
+require_once 'Classes/Pedido.php';
+require_once 'Classes/Pizza.php';
+require_once 'Classes/ItemDoPedido.php';
+require_once 'Classes/Batatinha.php';
+require_once 'Classes/Cerveja.php';
+require_once 'Classes/Refri.php';
 
 
 // Cria o endereço do cliente
@@ -44,9 +44,10 @@ if (isset($_POST["itensDoPedido"]['pizza'])) {
 
         $descricao = "Pizza: " . $pizza->getTamanho() . " " . $saborPizza . " Borda " . $pizza->getBorda();
         $pizza->setDescricao($descricao);
-        $pedido->addItemDoPedidoPizza($pizza)
+        $pedido->addItemDoPedidoPizza($pizza);
     }
 }
+
 if (isset($_POST["itensDoPedido"]["batata"])) {
     foreach ($_POST['batata_sabor'] as $key => $saborBatata) {
         $batatinha = new Batatinha();

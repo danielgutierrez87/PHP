@@ -1,19 +1,16 @@
 <?php 
     use Pedido;
 
-    class Faturamento_class
-    {
+    class Faturamento {
         private array $pedido;
-        public function addPedido(Pedido $pedido)
-        {
+        public function addPedido(Pedido $pedido){
             $this->pedido[] = $pedido;
         }
-        public function getPedido()
-        {
+        public function getPedido(){
             return $this->pedido;
         }
         public function historico($npedido){
-          
+            
         }
     }
 

@@ -1,4 +1,6 @@
 <?php 
+    require_once 'Classes/ItemDoPedido.php';
+
     class Cerveja extends ItemDoPedido {
         private $tamanho;
         private $tipo;

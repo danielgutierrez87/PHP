@@ -1,6 +1,6 @@
 <?php 
-    require_once 'conexao.php';
-    require_once 'endereco.php';
+    require_once 'Classes/conexao.php';
+    require_once 'Classes/endereco.php';
 
     class Cliente extends Endereco {
         private $nome;

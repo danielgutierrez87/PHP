@@ -3,20 +3,17 @@
         private $rua;
         private $bairro;
     
-        public function setRua($rua)
-        {
+        public function setRua($rua){
             $this->rua = $rua;
         }
-        public function getRua()
-        {
+        public function getRua(){
             return $this->rua;
         }
-        public function setBairro($bairro)
-        {
+        
+        public function setBairro($bairro){
             $this->bairro = $bairro;
         }
-        public function getBairro()
-        {
+        public function getBairro(){
             return $this->bairro;
         }
     }
