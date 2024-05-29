@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abastecimentos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Cadastro de Abastecimentos</h1>
+    <form action="abastecimento.php" method="post">
+
+        <label for="data">Data de abastecimento:</label>
+        <input type="text" name="consumido" id="consumido" required> <br>
+
+        <label for="hodometro">Km do hodometro:</label>
+        <input type="number" name="km" id="km" required> <br>
+        
+        <label for="litros">Litros Abastecidos:</label>
+        <input type="number" name="litros" id="litros" required> <br>
+
+        <label for="valorGasto">Valor gasto:</label>
+        <input type="number" name="valor" id="valor" required>  <br>
+
+        <input type="reset" value="Reset">
+        <input type="submit" value="Enviar"> 
+
+    </form>
+    <br>
+    <a href="veiculo.html">Início</a>
+</body>
+</html>
