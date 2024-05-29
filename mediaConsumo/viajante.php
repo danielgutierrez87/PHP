@@ -1,5 +1,7 @@
 <?php
 
+include "conexão.php";
+
 class Viajante {
 
 private $marca;
