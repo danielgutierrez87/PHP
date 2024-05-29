@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Média de Consumo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Média de consumo</h1>
+
+    <form action="cad.php" method="post"> 
+
+        <label for="marca">Marca do veículo:</label>
+        <input type="text" name="marca" id="marca" required>
+        <br>
+        <label for="modelo">Modelo do veículo:</label>
+        <input type="text" id="modelo" name="modelo" required>
+        <br>
+        <label for="motor">Motorização:</label>
+        <input type="text" name="motor" id="motor">
+        <br>
+        <label for="kminicio">km de início:</label>
+        <input type="number" name="kmini" id="kmini">
+        <br>
+        <label for="kmfim">km final:</label>
+        <input type="number" name="kmfim" id="kmfim">
+        <br>
+        <label for="totlitros">Litros de Combustível:</label>
+        <input type="number" name="totlitros" id="totlitros">
+        <br>
+        <label for="combustivel">Combustível:</label>
+        <input type="text" name="combustivel" id="combustivel">
+        <input type="submit" value="Enviar">
+        <input type="reset" value="Resetar">
+
+    </form>
