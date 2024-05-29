@@ -2,9 +2,9 @@
 
 include "conexão.php";
 
-class Viajante {
+class Carro {
 
-private $marca;
+
 private $modelo;
 private $motor;
 private $kmInicial;
@@ -12,14 +12,8 @@ private $kmFinal;
 private $totLitros;
 private $combustivel;
 
-    public function setMarca($marca) {
-        $this->marca = $marca;
-    }
-    public function getMarca() {
-        return $this->marca;
-    }
-
-    public function setModelo($modelo) {
+    
+     public function setModelo($modelo) {
         $this->modelo = $modelo;
     }
     public function getModelo() {
