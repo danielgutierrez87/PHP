@@ -7,6 +7,20 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
     <h1>APP DE RESERVAS</h1>
+
+    <form action="app.php" method="post"> 
+        <label for="nome">Nome do cliente:</label>
+        <input type="text" name="nome" id="nome" required>
+        <br>
+        <label for="cpf">CPF do cliente:</label>
+        <input type="text" id="cpf" name="cpf" required>
+        <br>
+        
+        <input type="submit" value="Enviar">
+        <input type="reset" value="Resetar">
+    </form>
+
 </body>
 </html>
